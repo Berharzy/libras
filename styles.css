@@ -3,6 +3,7 @@
   --secondary-color: rgb(255, 255, 255);
   --background-color: #fff;
   --container-bg: ;
+  --gostei-da-cor: #af4c96;
 }
 * {
   margin: 0;
@@ -44,7 +45,7 @@ h3 {
 }
 p {
   text-align: justify;
-  /* padding: 0 32px; */
+  padding: 0 32px;
 }
 .main-card {
   display: grid;
@@ -73,13 +74,14 @@ p {
   /* align-items: center;
   /* background-color: aqua; */
   height: 100%;
-  width: fit-content;
+  /*width: fit-content;*/
+  width: 95%;
 }
 .btn-div {
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 input {
   margin: 16px 8px;
@@ -93,6 +95,9 @@ input {
   width: 100%;
 }
 input:focus {
+  border: 2px solid var(--primary-color);
+}
+input:hover {
   border: 2px solid var(--primary-color);
 }
 a {
@@ -145,12 +150,48 @@ a:hover {
   width: 128px;
   margin: 16px;
 }
-@media screen and (max-width: 768px) {
 
-  body{
-    overflow: auto;
-  }
+.notification-container {
+  background-color: #4caf50;
+  color: white;
+  margin: 22px 16px 0px 0px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
 
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.notification-container.hide {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.notification-container.error {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  display: flex;
+  background-color: red;
+}
+.notification-container.info {
+  display: flex;
+  background-color: var(--primary-color);
+}
+.notification-container.success {
+  display: flex;
+  background-color: #4caf50;
+}
+
+.notification-container p {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+@media screen and (max-width: 982px) {
   h1 {
     font-size: 32px;
   }
@@ -160,49 +201,22 @@ a:hover {
   p {
     font-size: 12px;
   }
-  img{
-    margin: 0;
-    padding: 0;
-  }
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    padding: auto 8px ;
-    border-radius: 0;
-    transform: scale(100%);
-    height: 100%;
-    width: 100%;
+    height: fit-content;
+    transform: scale(70%);
   }
   .main-card {
     display: flex;
     flex-direction: column;
-    margin: 0px;
-    padding: 0px;
-    /* width: 80%;
-    height: 80% ; */
-    transform: scale(100%);
-    gap: 0px;
-
+    gap: 16px;
   }
   .card-one {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    height: fit-content;
-
-  }
-    .card-two {
-    display: block;
-      padding: 16px;
-    
-
   }
   #p-info {
     display: none;
-  }
-  #p-footer{
-    /* display: none; */
   }
 }

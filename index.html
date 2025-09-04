@@ -3,7 +3,6 @@
   <head>
     <title>Sandbox</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,11 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <script src="src/index.js" defer></script>
+    <script src="index.js" defer></script>
   </head>
 
   <body>
-    <div class="container">
+    <div id="containerId" class="container">
       <div class="main-card">
         <div class="card-one">
           <img id="log-img" src="https://avatar.iran.liara.run/public" />
@@ -30,23 +29,48 @@
             inclusão e descubra a beleza de se comunicar com as mãos.
           </p>
           <br />
-          <p id="p-footer">Aprender sobre Libras nunca foi tão fácil!</p>
+          <p>Aprender sobre Libras nunca foi tão fácil!</p>
         </div>
 
         <div class="card-two">
-          <form action="">
-            <input placeholder="E-mail ou usuário" type="email" />
+          <!--<form action="" id="loginForm">-->
+          <input
+            id="username"
+            name="username"
+            required
+            placeholder="E-mail ou usuário"
+            type="email"
+          />
 
-            <input placeholder="Senha" type="password" />
-          </form>
+          <input
+            id="password"
+            name="password"
+            required
+            placeholder="Senha"
+            type="password"
+          />
+
           <a href="#">Esqueci minha senha</a>
-          <div class="btn-div">
-            <button type="button" class="btn-secondary">Registrar</button>
-            <button type="submit" class="btn-primary">Acessar</button>
+
+          <div class="notification-container" id="notification">
+            <p id="notify-text">
+              Esta é uma notificação que se fechará automaticamente.
+            </p>
           </div>
+
+          <div class="btn-div">
+            <button id="register" type="button" class="btn-secondary">
+              Registrar
+            </button>
+            <button id="submit" type="submit" class="btn-primary">
+              Acessar
+            </button>
+          </div>
+          <!--   </form> -->
         </div>
       </div>
     </div>
+
     <div id="app"></div>
   </body>
 </html>
