@@ -3,27 +3,56 @@ const username = document.getElementById("username");
 const password = document.getElementById("password");
 const notification = document.getElementById("notification");
 const notifyText = document.getElementById("notify-text");
+const registerBtn = document.getElementById("register");
+const backToLoginBtn = document.getElementById("back-to-login-btn");
+const registerForm = document.getElementById("register-form");
+
+let timeIntervalID;
+
 const NOTIFY = Object.freeze({
   ERROR: "ERROR",
   INFO: "INFO",
   SUCCESS: "SUCCESS",
 });
+// Função para mostrar uma notificação
+function showNotification(message) {
+  document.getElementById("notify-text").textContent = message;
+  notification.style.display = "block";
+
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 3000); // Esconder após 3 segundos
+}
 
 const notify = (message, type) => {
+  // Limpa o timeout anterior, se existir
+  clearTimeout(timeIntervalID);
+  let classContainer;
   if (type === NOTIFY.ERROR) {
     notification.classList.add("error");
-    notifyText.textContent = message;
+    showNotification(message);
   }
   if (type === NOTIFY.INFO) {
     notification.classList.add("info");
-    notifyText.textContent = message;
+    showNotification(message);
   }
   if (type === NOTIFY.SUCCESS) {
     notification.classList.add("success");
-    notifyText.textContent = message;
+    showNotification(message);
   }
 };
 
+// Event listener para mostrar o formulário de registro
+registerBtn.addEventListener("click", () => {
+  loginForm.classList.add("hidden");
+  registerForm.classList.remove("hidden");
+});
+
+// Event listener para mostrar o formulário de login
+backToLoginBtn.addEventListener("click", () => {
+  registerForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+});
 function authenticateUser(username, password) {
   // Aqui você faria a requisição para sua API
   // Exemplo simulado:
@@ -42,7 +71,7 @@ function authenticateUser(username, password) {
     notify(`Seja bem-vindo ${username}`, "SUCCESS");
 
     // Redirecionar após login bem-sucedido
-    setTimeout(() => {
+    timeIntervalID = setTimeout(() => {
       window.location.href = "https://www.google.com"; // Altere para sua página
     }, 1000);
   } else {
