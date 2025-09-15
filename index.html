@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Curso de Libras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="src/index.js" defer></script>
+  </head>
+
+  <body>
+    <div id="containerId" class="container">
+      <div class="main-card">
+        <div class="card-one">
+      
+          <img id="log-img" src="https://avatar.iran.liara.run/public" />
+          <h1>curso de Libras</h1>
+
+          <h3>Língua Brasileira de Sinais</h3>
+          <br />
+          <ul id="lista-dados"></ul>
+          <p id="p-info">
+            Abraçar a Libras é mergulhar em um universo de expressão e
+            significado. Mais que palavras, é uma dança de gestos que conecta
+            corações e mentes, rompendo barreiras de som. Torne-se um agente de
+            inclusão e descubra a beleza de se comunicar com as mãos.
+          </p>
+          <br />
+          <p id="p-copyright">Aprender sobre Libras nunca foi tão fácil!</p>
+        </div>
+
+        <div class="card-two">
+
+          <!--<form action="" id="loginForm">-->
+            <div id="loginForm">
+              <div class="center-text">
+                <h2>Acessar</h2>
+
+              </div>
+          <input
+            id="username"
+            name="username"
+            required
+            placeholder="E-mail ou usuário"
+            type="email"
+          />
+
+          <input
+            id="password"
+            name="password"
+            required
+            placeholder="Senha"
+            type="password"
+          />
+
+          <a href="#">Esqueci minha senha</a>
+
+          <div class="notification-container" id="notification">
+            <p id="notify-text">
+              Esta é uma notificação que se fechará automaticamente.
+            </p>
+          </div>
+
+          <div class="btn-div">
+            <button id="register" type="button" class="btn-secondary">
+              Registrar
+            </button>
+            <button id="submit" type="submit" class="btn-primary">
+              entrar
+            </button>
+           
+          </div>
+        </div>
+          <!--   </form> -->
+         <!-- Formulário de Registro -->
+      <div id="register-form" class="hidden">
+        <div class="center-text">
+          
+          <h2>Registrar</h2>
+
+        </div>
+      
+        <div class="form-inputs">
+          <input
+            id="register-name"
+            name="name"
+            required
+            placeholder="Nome Completo"
+            type="text"
+          />
+          <input
+            id="register-email"
+            name="email"
+            required
+            placeholder="E-mail"
+            type="email"
+          />
+          <input
+            id="register-password"
+            name="password"
+            required
+            placeholder="Senha"
+            type="password"
+          />
+        </div>
+
+        <div class="btn-div">
+          <button id="back-to-login-btn" type="button" class="btn btn-secondary">
+            Voltar
+          </button>
+          <button id="submit-register-btn" type="button" class="btn btn-primary">
+            Criar Conta
+          </button>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+  </body>
+</html>
