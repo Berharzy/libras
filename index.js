@@ -7,6 +7,7 @@ const notifyText = document.getElementById("notify-text");
 const registerBtn = document.getElementById("register");
 const backToLoginBtn = document.getElementById("back-to-login-btn");
 const registerForm = document.getElementById("register-form");
+const notifyInformation = document.getElementById("notify-info");
 
 let timeIntervalID;
 
@@ -17,11 +18,11 @@ const NOTIFY = Object.freeze({
 });
 // Função para mostrar uma notificação
 function showNotification(message) {
-  document.getElementById("notify-text").textContent = message;
-  notification.style.display = "block";
+  document.getElementById("notify-info").textContent = message;
+  notifyInformation.style.display = "block";
 
   setTimeout(() => {
-    notification.style.display = "none";
+    notifyInformation.style.display = "none";
   }, 3000); // Esconder após 3 segundos
 }
 
@@ -29,16 +30,20 @@ const notify = (message, type) => {
   // Limpa o timeout anterior, se existir
   clearTimeout(timeIntervalID);
   let classContainer;
+
   if (type === NOTIFY.ERROR) {
-    notification.classList.add("error");
+    notifyInformation.classList.add("err");
+    applyShake(password);
+    applyShake(username);
+
     showNotification(message);
   }
   if (type === NOTIFY.INFO) {
-    notification.classList.add("info");
+    notifyInformation.classList.add("info");
     showNotification(message);
   }
   if (type === NOTIFY.SUCCESS) {
-    notification.classList.add("success");
+    notifyInformation.classList.add("success");
     showNotification(message);
   }
 };
@@ -73,15 +78,33 @@ function authenticateUser(username, password) {
 
     // Redirecionar após login bem-sucedido
     timeIntervalID = setTimeout(() => {
-      window.location.href = "https://www.google.com"; // Altere para sua página
+      // window.location.href = "https://www.google.com"; // Altere para sua página
+
+      alert("Você será redirecionado para outra página!");
     }, 1000);
   } else {
     notify("Usuário ou senha incorretos.", "ERROR");
   }
 }
 
+// Função para aplicar o shake
+const applyShake = (input) => {
+  input.classList.add("shake");
+  input.classList.add("error");
+  input.addEventListener(
+    "animationend",
+    () => {
+      input.classList.remove("shake");
+      input.classList.remove("error");
+    },
+    { once: true }
+  );
+};
+
 sButton.addEventListener("click", () => {
   if (!username.value || !password.value) {
+    // Se o input estiver vazio, ative o shake
+
     notify(
       "Não foi possível fazer login. O usuário ou senha estão incorretos!",
       "ERROR"
@@ -118,33 +141,3 @@ document.getElementById("password").addEventListener("input", function () {
     this.setCustomValidity("");
   }
 });
-
-async function buscarDados() {
-  try {
-    const resposta = await fetch("https://r5s6zt.csb.app/dados");
-    const dados = await resposta.json();
-    const lista = document.getElementById("lista-dados");
-
-    dados.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = JSON.stringify(item);
-      lista.appendChild(li);
-    });
-  } catch (error) {
-    console.error("Erro ao buscar dados:", error);
-  }
-}
-
-async function buscarDadosSample() {
-  try {
-    const resposta = await fetch("https://vl7xl9-3000.csb.app");
-    const dados = await resposta.json();
-
-    // Manipular os dados recebidos
-    console.log(dados);
-  } catch (error) {
-    console.error("Erro ao buscar dados:", error);
-  }
-}
-buscarDadosSample();
-// buscarDados();
